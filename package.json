@@ -4,7 +4,10 @@
   "main": "index.js",
   "description": "Website displaying all Pokémons",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "build:dev": "tsc --watch",
+    "start": "npx serve src",
+    "start:dev": "npx serve src --watchAll",
     "prepare": "husky install"
   },
   "keywords": [],
