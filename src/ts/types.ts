@@ -9,3 +9,10 @@ export interface PokemonResponse extends Pokemon {
   previous: string;
   results: Pokemon[];
 }
+export interface PokemonDetails {
+  name: string;
+  sprites: {
+    front_default: string;
+    front_shiny: string;
+  };
+}
