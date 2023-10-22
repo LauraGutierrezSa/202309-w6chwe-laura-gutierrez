@@ -11,7 +11,7 @@ export class Button extends Component {
   ) {
     super(parentElement, "button", "change-pokemons");
     const { innerHtml, method } = buttonInfo;
-    this.innerHtml = innerHtml;
+    this.innerHtml = innerHtml || "";
     this.method = method;
   }
 
