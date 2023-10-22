@@ -2,7 +2,9 @@ import type { Pokemon } from "./types.js";
 import type { PokemonResponse } from "./types.js";
 import type { PokemonDetails } from "./types.js";
 
-export const getPokemons = async (apiUrl: string): Promise<Pokemon[]> => {
+export const apiUrl = "https://pokeapi.co/api/v2/pokemon";
+
+export const getPokemons = async (): Promise<Pokemon[]> => {
   try {
     const response = await fetch(apiUrl);
     const getPokemonsPromise = (await response.json()) as PokemonResponse;
