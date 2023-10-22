@@ -15,9 +15,7 @@ export const getPokemons = async (): Promise<Pokemon[]> => {
   }
 };
 
-export const getPokemonDetails = async (
-  apiUrl: string,
-): Promise<PokemonDetails> => {
+export const getPokemonDetails = async (): Promise<PokemonDetails> => {
   try {
     const response = await fetch(apiUrl);
     return (await response.json()) as PokemonDetails;
