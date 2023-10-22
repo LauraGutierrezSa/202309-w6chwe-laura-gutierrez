@@ -17,7 +17,7 @@ class App extends Component {
     <div class= "app">
       <header class="main-header">
         <h1 class="main-title">Pokemon Page</h1>
-        <img class="image_title" src="pokemon-logo.svg">
+        <img class="main-logo" src=".images/pokemon-logo.svg">
       </header>
       <main class="main">
         <section class="frame container">
