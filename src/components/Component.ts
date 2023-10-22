@@ -1,21 +1,16 @@
-interface DataOptions {
-  tagName: string;
-
-  className: string;
-}
-
 abstract class Component {
   protected readonly element: Element;
 
   constructor(
-    options: DataOptions,
     protected readonly parentElement: Element,
+    tagName: string,
+    className: string,
   ) {
     this.parentElement = parentElement;
 
-    this.element = document.createElement(options.tagName);
+    this.element = document.createElement(tagName);
 
-    this.element.className = options.className;
+    this.element.className = className;
   }
 
   public render(): void {
