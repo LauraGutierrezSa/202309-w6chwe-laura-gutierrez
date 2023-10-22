@@ -1,8 +1,15 @@
 import Component from "../Component.js";
 
 class App extends Component {
-  constructor(parentElement: Element) {
-    super(parentElement, "div", "main-container");
+  private readonly nexturl: string;
+  private readonly previousurl: string;
+  private readonly children: unknown[];
+  constructor(
+    parentElement: Element,
+    private readonly pokemonUrlApi: string,
+  ) {
+    super(parentElement, "div", "App");
+    this.children = [];
   }
 
   protected populate(): void {
