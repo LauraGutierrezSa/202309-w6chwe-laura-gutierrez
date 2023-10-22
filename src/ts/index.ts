@@ -4,7 +4,7 @@ import type { PokemonDetails } from "./types.js";
 
 export const apiUrl = "https://pokeapi.co/api/v2/pokemon";
 
-export const getPokemons = async (): Promise<Pokemon[]> => {
+export const getPokemons = async (_url: string): Promise<Pokemon[]> => {
   try {
     const response = await fetch(apiUrl);
     const getPokemonsPromise = (await response.json()) as PokemonResponse;
@@ -15,7 +15,9 @@ export const getPokemons = async (): Promise<Pokemon[]> => {
   }
 };
 
-export const getPokemonDetails = async (): Promise<PokemonDetails> => {
+export const getPokemonDetails = async (
+  _url: string,
+): Promise<PokemonDetails> => {
   try {
     const response = await fetch(apiUrl);
     return (await response.json()) as PokemonDetails;
