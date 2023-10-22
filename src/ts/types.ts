@@ -18,3 +18,8 @@ export interface PokemonDetails {
     front_shiny: string;
   };
 }
+
+export interface ButtonInfo {
+  method: () => unknown;
+  innerHtml: string;
+}

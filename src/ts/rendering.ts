@@ -2,6 +2,11 @@ import App from "../components/App/App.js";
 import { apiUrl, getPokemonDetails, getPokemons } from "./index.js";
 import type { Pokemon } from "./types.js";
 
+let page = 0;
+const urlPrefix = "https://pokeapi.co/api/v2/pokemon?offset=";
+const urlSuffix = "&limit=10";
+let currentPokemons: Pokemon[];
+
 export const renderPokemonList = (pokemons: Pokemon[]): void => {
   const containerElement = document.getElementById("pokemon-container");
   if (!containerElement) return;
@@ -18,11 +23,7 @@ export const renderPokemonList = (pokemons: Pokemon[]): void => {
 
 export const fetchAndRenderPokemons = async () => {
   try {
-    const pokemonUrls = await getPokemons({
-      _url: apiUrl,
-      _page: 1,
-      _urlSuffix: "&limit=10",
-    });
+    const pokemonUrls = await getPokemons({ urlPrefix, page, urlSuffix });
     const pokemonDataPromises = pokemonUrls.map(async () =>
       getPokemonDetails(apiUrl),
     );
@@ -30,16 +31,11 @@ export const fetchAndRenderPokemons = async () => {
 
     renderPokemonList(pokemons);
   } catch {
-    console.error("Error! Couldn't fetch nor render any Pokémon.");
+    throw new Error("Error! Couldn't fetch nor render any Pokémon.");
   }
 };
 
 document.addEventListener("DOMContentLoaded", fetchAndRenderPokemons);
-
-let page = 0;
-const urlPrefix = "https://pokeapi.co/api/v2/pokemon?offset=";
-const urlSufix = "&limit=10";
-let currentPokemons: Pokemon[];
 
 export const printPokemons = () => {
   const pokedex = document.querySelector(".pokedex");
@@ -59,9 +55,9 @@ export const printPokemons = () => {
 export const getMorePokemons = async () => {
   page += 10;
   const pokemons = await getPokemons({
-    _url: urlPrefix,
+    _urlPrefix: urlPrefix,
     _page: page,
-    _urlSuffix: urlSufix,
+    _urlSuffix: urlSuffix,
   });
   currentPokemons = pokemons;
   printPokemons();
@@ -70,14 +66,41 @@ export const getMorePokemons = async () => {
 export const getLessPokemons = async () => {
   page -= 10;
   const pokemons = await getPokemons({
-    _url: urlPrefix,
+    _urlPrefix: urlPrefix,
     _page: page,
-    _urlSuffix: urlSufix,
+    _urlSuffix: urlSuffix,
   });
   currentPokemons = pokemons;
   printPokemons();
 };
 
 const bodyElement = document.querySelector(".app")!;
-const appElement = new App(bodyElement);
+const appElement = new App(bodyElement, "main-container");
+type ButtonAction = (event: MouseEvent) => void;
 appElement.render();
+
+const controllersElement = document.querySelector(".pokemon-box__controllers")!;
+
+const buttonLess = document.createElement("button");
+buttonLess.className = "button--search";
+buttonLess.textContent = "Go back";
+controllersElement.appendChild(buttonLess);
+
+const buttonMore = document.createElement("button");
+buttonMore.className = "button--search";
+buttonMore.textContent = "Search More";
+controllersElement.appendChild(buttonMore);
+
+buttonMore.addEventListener(
+  "click",
+  getMorePokemons as unknown as ButtonAction,
+);
+
+buttonLess.addEventListener(
+  "click",
+  getLessPokemons as unknown as ButtonAction,
+);
+
+const pokemons = await getPokemons({ urlPrefix, page, urlSuffix });
+currentPokemons = pokemons;
+printPokemons();

@@ -7,7 +7,7 @@ describe("Given a url", () => {
 
       await expect(
         getPokemons({
-          _url: apiUrl,
+          _urlPrefix: apiUrl,
           _page: 6,
           _urlSuffix: "&limit=10",
         }),
@@ -33,7 +33,7 @@ describe("Given the getPokemons function", () => {
       global.fetch = mockFetch;
 
       const pokemons = await getPokemons({
-        _url: apiUrl,
+        _urlPrefix: apiUrl,
         _page: 1,
         _urlSuffix: "&limit=10",
       });
