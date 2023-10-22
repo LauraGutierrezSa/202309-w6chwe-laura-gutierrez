@@ -5,7 +5,13 @@ describe("Given a url", () => {
     test("then it should throw an error", async () => {
       const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=invalid&offset=0";
 
-      await expect(getPokemons(apiUrl)).rejects.toThrow();
+      await expect(
+        getPokemons({
+          _url: apiUrl,
+          _page: 6,
+          _urlSuffix: "&limit=10",
+        }),
+      ).rejects.toThrow();
     });
   });
 });
@@ -26,7 +32,11 @@ describe("Given the getPokemons function", () => {
 
       global.fetch = mockFetch;
 
-      const pokemons = await getPokemons(apiUrl);
+      const pokemons = await getPokemons({
+        _url: apiUrl,
+        _page: 1,
+        _urlSuffix: "&limit=10",
+      });
 
       expect(Array.isArray(pokemons)).toBe(true);
       expect(pokemons.length).toBeGreaterThan(0);

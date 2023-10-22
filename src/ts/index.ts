@@ -4,7 +4,15 @@ import type { PokemonDetails } from "./types.js";
 
 export const apiUrl = "https://pokeapi.co/api/v2/pokemon";
 
-export const getPokemons = async (_url: string): Promise<Pokemon[]> => {
+export const getPokemons = async ({
+  _url,
+  _page,
+  _urlSuffix,
+}: {
+  _url: string;
+  _page: number;
+  _urlSuffix: string;
+}): Promise<Pokemon[]> => {
   try {
     const response = await fetch(apiUrl);
     const getPokemonsPromise = (await response.json()) as PokemonResponse;

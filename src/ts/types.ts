@@ -12,6 +12,7 @@ export interface Pokemon {
 export interface PokemonDetails {
   name: string;
   url: string;
+  type: string;
   sprites: {
     front_default: string;
     front_shiny: string;
