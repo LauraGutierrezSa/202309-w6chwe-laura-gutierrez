@@ -26,4 +26,22 @@ describe("Given an App component", () => {
       expect(main).toBeTruthy();
     });
   });
+
+  describe("Given the header", () => {
+    let header: Element;
+
+    beforeEach(() => {
+      header = container.querySelector(".main-header")!;
+    });
+
+    test("Then it should be rendered", () => {
+      expect(header).toBeTruthy();
+    });
+
+    test("Then it should set the title text correctly", () => {
+      const title = header.querySelector(".main-title")!;
+      expect(title).toBeTruthy();
+      expect(title.textContent).toBe("Pokemon Page");
+    });
+  });
 });
