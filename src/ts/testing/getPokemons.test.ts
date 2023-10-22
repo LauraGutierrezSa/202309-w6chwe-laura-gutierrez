@@ -1,4 +1,4 @@
-import { getPokemons } from ".";
+import { getPokemons } from "../index.js";
 
 describe("Given a url", () => {
   describe("When it recieves an invalid apiUrl", () => {

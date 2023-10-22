@@ -1,4 +1,4 @@
-import { getPokemonDetails } from "./index.js";
+import { getPokemonDetails } from "../index.js";
 
 describe("Given a URL", () => {
   describe("When it receives an invalid Pokémon URL", () => {
