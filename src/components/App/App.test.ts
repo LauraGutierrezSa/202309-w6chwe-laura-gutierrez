@@ -7,7 +7,7 @@ describe("Given an App component", () => {
   beforeEach(() => {
     container = document.createElement("div");
     document.body.appendChild(container);
-    app = new App(container);
+    app = new App(container, "");
     app.render();
   });
 

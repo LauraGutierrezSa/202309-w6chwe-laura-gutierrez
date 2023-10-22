@@ -14,6 +14,7 @@ class App extends Component {
 
   protected populate(): void {
     this.element.innerHTML = `
+    <div class= "app">
       <header class="main-header">
         <h1 class="main-title">Pokemon Page</h1>
         <img class="image_title" src="pokemon-logo.svg">
@@ -22,6 +23,7 @@ class App extends Component {
         <section class="frame container">
         </section>
       </main>
+      </div>
     `;
   }
 }
