@@ -3,6 +3,7 @@
   --main-font-family: "Pokemon Solid", sans-serif;
   --medium-color: #c7a008;
   --dark-color: #3c5aa6;
+  --main-font-size: 1.5rem;
 }
 
 *,
@@ -20,8 +21,32 @@ h1 {
   margin: 0;
 }
 
+body {
+  font-size: var(--main-font-size);
+  background-color: var(--main-color);
+}
+
 ul {
   list-style: none;
   margin-top: 0;
   padding: 0;
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--dark-color);
+  color: var(--main-color);
+}
+
+.app {
+  background-color: var(--main-color);
+}
+
+.main-header {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  padding: 20px;
 }
