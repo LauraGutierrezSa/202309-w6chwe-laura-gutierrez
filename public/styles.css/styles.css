@@ -1,7 +1,18 @@
+:root {
+  --main-color: #ffcc03;
+  --main-font-family: "Pokemon Solid", sans-serif;
+  --medium-color: #c7a008;
+  --dark-color: #3c5aa6;
+}
+
 *,
 ::before,
 ::after {
   box-sizing: border-box;
+}
+
+html {
+  font-family: var(--main-font-family);
 }
 
 body,
