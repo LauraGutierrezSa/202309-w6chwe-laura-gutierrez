@@ -41,7 +41,7 @@ describe("Given an App component", () => {
     test("Then it should set the title text correctly", () => {
       const title = header.querySelector(".main-title")!;
       expect(title).toBeTruthy();
-      expect(title.textContent).toBe("Pokemon Page");
+      expect(title.textContent).toBe("Pokédex - Pokémon Wiki");
     });
   });
 });
