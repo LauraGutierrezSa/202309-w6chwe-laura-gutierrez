@@ -81,6 +81,8 @@ export const getLessPokemons = async () => {
 const bodyElement = document.querySelector(".app")!;
 const appElement = new App(bodyElement, "main-container");
 type ButtonAction = (event: MouseEvent) => void;
+const titleElement = document.querySelector(".main-title")!;
+titleElement.textContent = "Pokédex - Pokémon Wiki";
 appElement.render();
 
 const controllersElement = document.querySelector(".pokemon-box__controllers")!;

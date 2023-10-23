@@ -16,7 +16,7 @@ class App extends Component {
     this.element.innerHTML = `
     <div class= "app">
       <header class="main-header">
-        <h1 class="main-title">Pokemon Page</h1>
+        <h1 class="main-title">Pokédex - Pokémon Wiki</h1>
         <img class="main-logo" src=".images/pokemon-logo.svg">
       </header>
       <main class="main">
