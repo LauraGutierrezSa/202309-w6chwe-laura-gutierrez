@@ -23,7 +23,11 @@ export const renderPokemonList = (pokemons: Pokemon[]): void => {
 
 export const fetchAndRenderPokemons = async () => {
   try {
-    const pokemonUrls = await getPokemons({ urlPrefix, page, urlSuffix });
+    const pokemonUrls = await getPokemons({
+      _urlPrefix: urlPrefix,
+      _page: page,
+      _urlSuffix: urlSuffix,
+    });
     const pokemonDataPromises = pokemonUrls.map(async () =>
       getPokemonDetails(apiUrl),
     );
@@ -101,6 +105,10 @@ buttonLess.addEventListener(
   getLessPokemons as unknown as ButtonAction,
 );
 
-const pokemons = await getPokemons({ urlPrefix, page, urlSuffix });
+const pokemons = await getPokemons({
+  _urlPrefix: urlPrefix,
+  _page: page,
+  _urlSuffix: urlSuffix,
+});
 currentPokemons = pokemons;
 printPokemons();
